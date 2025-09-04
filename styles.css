@@ -254,11 +254,31 @@ body {
     overflow: hidden;
 }
 
+.profile-image:has(.hero-profile-img:not([src])),
+.profile-image:has(.hero-profile-img[src=""]) {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.profile-image:has(.hero-profile-img:not([src]))::after,
+.profile-image:has(.hero-profile-img[src=""])::after {
+    content: '\f007';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: white;
+}
+
 .hero-profile-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+    display: block;
+}
+
+.hero-profile-img:not([src]),
+.hero-profile-img[src=""] {
+    display: none;
 }
 
 .scroll-indicator {
@@ -365,12 +385,36 @@ section {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-photo:has(.profile-img:not([src])),
+.profile-photo:has(.profile-img[src=""]) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.profile-photo:has(.profile-img:not([src]))::after,
+.profile-photo:has(.profile-img[src=""])::after {
+    content: '\f007';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 3rem;
+    color: white;
 }
 
 .profile-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+}
+
+.profile-img:not([src]),
+.profile-img[src=""] {
+    display: none;
 }
 
 /* Education Section */
