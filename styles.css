@@ -126,11 +126,11 @@ body {
 }
 
 .hero-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 4rem;
     align-items: center;
     position: relative;
@@ -229,8 +229,8 @@ body {
 }
 
 .profile-card {
-    width: 200px;
-    height: 200px;
+    width: 600px;
+    height: 600px;
     background: transparent;
     border-radius: 50%;
     display: flex;
@@ -1017,8 +1017,8 @@ section {
     }
 
     .profile-card {
-        width: 150px;
-        height: 150px;
+        width: 450px;
+        height: 450px;
     }
 
     .profile-image {
