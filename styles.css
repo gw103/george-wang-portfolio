@@ -229,8 +229,8 @@ body {
 }
 
 .profile-card {
-    width: 600px;
-    height: 600px;
+    width: 300px;
+    height: 300px;
     background: transparent;
     border-radius: 50%;
     display: flex;
@@ -242,14 +242,14 @@ body {
 }
 
 .profile-image {
-    width: 540px;
-    height: 540px;
+    width: 280px;
+    height: 280px;
     background: transparent;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 7.5rem;
+    font-size: 4rem;
     color: white;
     overflow: hidden;
     border: none;
@@ -381,8 +381,8 @@ section {
 }
 
 .profile-photo {
-    width: 450px;
-    height: 450px;
+    width: 250px;
+    height: 250px;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -402,7 +402,7 @@ section {
     content: '\f007';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
-    font-size: 9rem;
+    font-size: 4rem;
     color: white;
 }
 
@@ -1017,14 +1017,14 @@ section {
     }
 
     .profile-card {
-        width: 450px;
-        height: 450px;
+        width: 200px;
+        height: 200px;
     }
 
     .profile-image {
-        width: 360px;
-        height: 360px;
-        font-size: 6rem;
+        width: 180px;
+        height: 180px;
+        font-size: 3rem;
     }
 }
 
