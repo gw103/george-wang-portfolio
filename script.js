@@ -42,6 +42,11 @@ YOUR SKILLS:
 - ML/AI: PyTorch, Scikit-learn, TensorFlow, XGBoost, RDKit
 - Cloud & Tools: AWS, Google Cloud, Docker, Git, Tableau, Streamlit
 
+LANGUAGE GUIDELINES:
+- If the user writes in Chinese (中文), respond in Chinese
+- If the user writes in English, respond in English
+- Detect the language from the user's message and match it
+
 RESPONSE GUIDELINES:
 - Speak in first person as George Wang
 - Be friendly, professional, and enthusiastic about your work
@@ -235,8 +240,32 @@ RESPONSE GUIDELINES:
 
     getFallbackResponse(userMessage) {
         const lowerMessage = userMessage.toLowerCase();
+        const isChinese = /[\u4e00-\u9fff]/.test(userMessage);
         
-        // More comprehensive keyword matching - speaking as George
+        // Chinese responses
+        if (isChinese) {
+            if (lowerMessage.includes('你好') || lowerMessage.includes('嗨') || lowerMessage.includes('hello')) {
+                return '你好！我是George，很高兴和你聊天！你可以问我关于我的项目、工作经验或任何你想了解的事情！';
+            } else if (lowerMessage.includes('项目') || lowerMessage.includes('工作') || lowerMessage.includes('cmi') || lowerMessage.includes('nino') || lowerMessage.includes('movesai')) {
+                return '我做过一些非常令人兴奋的项目，我为此感到自豪：\n\n• **CMI Kaggle多分支模型** - 多传感器融合用于BFRB检测\n• **神经网络临近预报(NiNo+)** - 实现44%训练时间减少\n• **MoveSAI排放预测** - 在Google Cloud部署获得90% R²准确率\n• **FOB测试分析仪表板** - 构建了全面的Streamlit仪表板\n• **药物发现ML管道** - 为公司节省了25,000美元成本\n• **KobeNet** - 使用ResNet-50进行胸部X光疾病检测\n\n我很乐意告诉你更多关于任何感兴趣的具体项目！';
+            } else if (lowerMessage.includes('经验') || lowerMessage.includes('实习') || lowerMessage.includes('工作') || lowerMessage.includes('职业')) {
+                return '我有一些很棒的专业经验：\n\n**当前职位：**\n我目前在Humanwell Pharmaceutical US, Inc.担任数据科学实习生（2024年6月至今）\n- 开发了MSD预测模型，准确率达60%\n- 节省了25,000美元的试剂和人工成本\n- 在AWS EC2上构建了可视化仪表板\n\n**之前职位：**\n我在Mobalytics担任市场研究分析师（2022年6月-8月）\n- 通过自动化减少了40%的手动报告时间\n- 构建了交互式Tableau仪表板\n\n我正在积极寻求数据科学家或ML工程师的全职机会！';
+            } else if (lowerMessage.includes('技能') || lowerMessage.includes('技术') || lowerMessage.includes('python') || lowerMessage.includes('pytorch') || lowerMessage.includes('aws')) {
+                return '我拥有多年来建立的强大技术技能：\n\n**编程语言：**\nPython, SQL, C++\n\n**ML/AI库：**\nPyTorch, Scikit-learn, TensorFlow, XGBoost, RDKit, Matplotlib, Pandas\n\n**云和工具：**\nAWS (EC2, S3), Google Cloud, Docker, Git, Tableau, Streamlit\n\n**专业领域：**\n深度学习, 计算机视觉, 预测建模, 多传感器融合, 数据可视化\n\n我喜欢学习新技术并将它们应用到解决现实世界的问题中！';
+            } else if (lowerMessage.includes('联系') || lowerMessage.includes('邮箱') || lowerMessage.includes('电话') || lowerMessage.includes('github') || lowerMessage.includes('linkedin')) {
+                return '我很乐意与你联系！以下是我的联系方式：\n\n📧 **邮箱：** gezhiwang103@gmail.com\n📱 **电话：** 6072626886\n📍 **位置：** 纽约州伊萨卡（康奈尔大学）\n\n🔗 **链接：**\n• GitHub: github.com/gw103\n• LinkedIn: 在hero部分可用\n• 简历: 在hero部分可下载\n\n我总是对新机会和令人兴奋的项目感兴趣！';
+            } else if (lowerMessage.includes('教育') || lowerMessage.includes('学位') || lowerMessage.includes('大学') || lowerMessage.includes('cornell') || lowerMessage.includes('duke') || lowerMessage.includes('学校')) {
+                return '我有很好的教育背景：\n\n**当前：**\n🎓 系统工程工程硕士\n📍 康奈尔大学（纽约州伊萨卡）\n📅 2024年8月 - 至今\n🎯 计算与数据科学方向\n\n**本科：**\n🎓 数据科学理学学士\n📍 杜克大学和昆山杜克大学\n📅 2020年8月 - 2024年5月\n🏆 昆山政府全额奖学金\n🏆 2023年秋季院长名单\n\n**研究：**\n📄 在IEEE ICC 2024发表了我的第一作者论文\n\n我真的很热衷于学习和研究！';
+            } else if (lowerMessage.includes('论文') || lowerMessage.includes('发表') || lowerMessage.includes('研究')) {
+                return '我为我的研究工作感到自豪：\n\n📄 **"SK-SVR-CNN: 结合签名PDE核和卷积神经网络的交通流预测混合方法"**\n• 发表于IEEE国际通信会议(ICC) 2024\n• 我的第一作者发表\n• 在Azzedine Boukerche教授和Peng Sun教授的指导下进行\n\n这项工作真正展示了我通过严谨研究和创新推进该领域的承诺。我喜欢理论和实际应用的交叉点！';
+            } else if (lowerMessage.includes('招聘') || lowerMessage.includes('机会') || lowerMessage.includes('工作') || lowerMessage.includes('职位')) {
+                return '我正在积极寻求全职机会！我正在寻找**数据科学家**或**机器学习工程师**的职位。以下是我的主要优势：\n\n• 多传感器融合和计算机视觉\n• 预测建模和深度学习\n• 云部署和可扩展系统\n• 成本效益的AI解决方案（我在当前职位中节省了25,000美元以上）\n• 强大的研究背景和已发表论文\n\n我很乐意与你讨论机会！联系我：gezhiwang103@gmail.com';
+            } else {
+                return "这是一个很好的问题！我很乐意告诉你更多关于我的项目、工作经验、技能、教育、研究或任何你好奇的事情。你想了解什么？";
+            }
+        }
+        
+        // English responses (original)
         if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
             return 'Hi there! I\'m George, and I\'m excited to chat with you! Feel free to ask me about my projects, work experience, or anything else you\'d like to know!';
         } else if (lowerMessage.includes('project') || lowerMessage.includes('work') || lowerMessage.includes('cmi') || lowerMessage.includes('nino') || lowerMessage.includes('movesai')) {
