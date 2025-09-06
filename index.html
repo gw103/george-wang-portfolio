@@ -26,6 +26,9 @@
                     <a href="#education" class="nav-link">Education</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
                     <a href="#publications" class="nav-link">Publications</a>
                 </li>
                 <li class="nav-item">
@@ -159,6 +162,62 @@
                             <span>Speech Recognition</span>
                             <span>Linear Algebra</span>
                             <span>Probability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Data Science Intern (Drug Discovery)</h3>
+                        <h4>Humanwell Pharmaceutical US, Inc.</h4>
+                        <p class="experience-period">June 2024 – Present</p>
+                        <p class="experience-location">St. Louis, Missouri</p>
+                        <p class="experience-description">
+                            Developed a predictive model for Mean Squared Displacement (MSD) using SMILES molecular structures, converting SMILES into Extended Reduced Graph (ERG) fingerprints with RDKit. Implemented an ensemble learning system (SVM, Random Forest, XGBoost, MLP) achieving 60% accuracy in 5-fold cross-validation with limited data (800 samples).
+                        </p>
+                        <div class="experience-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Deployed FastAPI-based inference API saving $25,000 in costs</li>
+                                <li>Built AWS EC2-hosted visualization dashboard</li>
+                                <li>Implemented t-SNE and LDA for SAR dataset analysis</li>
+                                <li>Automated experimental result recording and analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Market Research Analyst Externship</h3>
+                        <h4>Mobalytics</h4>
+                        <p class="experience-period">June 2022 – August 2022</p>
+                        <p class="experience-location">Santa Monica, California</p>
+                        <p class="experience-description">
+                            Developed and executed SQL queries on PostgreSQL databases to extract and analyze gaming market data, building interactive dashboards in Tableau to visualize KPIs such as user growth, revenue trends, and market share.
+                        </p>
+                        <div class="experience-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Reduced manual reporting time by 40% through automation</li>
+                                <li>Created automated data pipelines with SQL and Python</li>
+                                <li>Built interactive Tableau dashboards for strategic decisions</li>
+                                <li>Performed statistical forecasting and data visualization</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -502,6 +561,39 @@
         </div>
     </footer>
 
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-widget">
+        <div class="chatbot-label">Chat with me</div>
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div id="chatbot-container" class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="chatbot-profile">
+                    <img src="George.jpg" alt="George Wang" class="chatbot-avatar">
+                    <h4>Chat with George</h4>
+                </div>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="chat-message bot-message">
+                    <img src="George.jpg" alt="George" class="message-avatar">
+                    <div class="message-content">Hi there! I'm George, and I'm excited to chat with you! Feel free to ask me about my projects, work experience, or anything else you'd like to know!
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input-field" placeholder="Ask me anything..." maxlength="500">
+                <button id="chatbot-send" class="chatbot-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>

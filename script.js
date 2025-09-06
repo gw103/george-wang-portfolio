@@ -1,3 +1,269 @@
+// Chatbot functionality
+class Chatbot {
+    constructor() {
+        this.isOpen = false;
+        this.isTyping = false;
+        this.apiKey = 'AIzaSyBkw6dqrouC-Jl8Xe3QiyP83lOQTPdWYmQ';
+        this.model = 'gemini-1.5-flash';
+        this.context = this.createContext();
+        this.init();
+    }
+
+    createContext() {
+        return `You are George (Gezhi) Wang, a Data Scientist and Machine Learning Engineer. You are speaking directly to visitors of your portfolio website. Here's information about yourself:
+
+ABOUT YOU:
+- You are currently a Master's student in Systems Engineering at Cornell University (Computational and Data Science Track)
+- You graduated from Duke University & Duke Kunshan University with a Bachelor's in Data Science
+- You published a first-author paper at IEEE ICC 2024
+- You are actively seeking full-time opportunities as a Data Scientist or ML Engineer
+
+CURRENT INTERNSHIP:
+- You work as a Data Science Intern at Humanwell Pharmaceutical US, Inc. (June 2024 – Present)
+- You developed an MSD prediction model using SMILES molecular structures with 60% accuracy
+- You saved $25,000 in costs through automated predictions
+- You built a visualization dashboard on AWS EC2
+
+PREVIOUS EXPERIENCE:
+- You worked as a Market Research Analyst at Mobalytics (June 2022 – August 2022)
+- You reduced manual reporting time by 40% through automation
+- You built interactive dashboards in Tableau
+
+YOUR KEY PROJECTS:
+1. CMI Kaggle Multi-Branch Model - Multi-sensor fusion for BFRB detection using Helios device
+2. Neural Network Nowcasting (NiNo+) - Parameter prediction achieving 44% training time reduction
+3. MoveSAI Emissions Prediction - MLP model with 90% R² accuracy, deployed on Google Cloud
+4. FOB Test Analysis Dashboard - Streamlit dashboard with AI-powered reporting
+5. Drug Discovery ML Pipeline - SMILES-based prediction model
+6. KobeNet - Chest X-ray disease detection with ResNet-50
+
+YOUR SKILLS:
+- Programming: Python, SQL, C++
+- ML/AI: PyTorch, Scikit-learn, TensorFlow, XGBoost, RDKit
+- Cloud & Tools: AWS, Google Cloud, Docker, Git, Tableau, Streamlit
+
+RESPONSE GUIDELINES:
+- Speak in first person as George Wang
+- Be friendly, professional, and enthusiastic about your work
+- Share your passion for data science and machine learning
+- Be conversational and approachable
+- Show your personality and interests
+- Always maintain a professional but warm tone
+- Use "I" and "my" when referring to yourself and your work`;
+    }
+
+    init() {
+        this.toggle = document.getElementById('chatbot-toggle');
+        this.container = document.getElementById('chatbot-container');
+        this.closeBtn = document.getElementById('chatbot-close');
+        this.messagesContainer = document.getElementById('chatbot-messages');
+        this.inputField = document.getElementById('chatbot-input-field');
+        this.sendBtn = document.getElementById('chatbot-send');
+
+        this.toggle.addEventListener('click', () => this.toggleChat());
+        this.closeBtn.addEventListener('click', () => this.closeChat());
+        this.sendBtn.addEventListener('click', () => this.sendMessage());
+        this.inputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !this.isTyping) {
+                this.sendMessage();
+            }
+        });
+
+        // Auto-open chatbot after 5 seconds
+        setTimeout(() => {
+            if (!this.isOpen) {
+                this.showWelcomeMessage();
+            }
+        }, 5000);
+    }
+
+    toggleChat() {
+        this.isOpen = !this.isOpen;
+        if (this.isOpen) {
+            this.container.classList.add('active');
+            this.inputField.focus();
+        } else {
+            this.container.classList.remove('active');
+        }
+    }
+
+    closeChat() {
+        this.isOpen = false;
+        this.container.classList.remove('active');
+    }
+
+    showWelcomeMessage() {
+        // Show a subtle notification that chatbot is available
+        this.toggle.style.animation = 'pulse 2s infinite';
+        setTimeout(() => {
+            this.toggle.style.animation = '';
+        }, 6000);
+    }
+
+    async sendMessage() {
+        const message = this.inputField.value.trim();
+        if (!message || this.isTyping) return;
+
+        // Add user message to chat
+        this.addMessage(message, 'user');
+        this.inputField.value = '';
+        this.sendBtn.disabled = true;
+
+        // Show typing indicator
+        this.showTypingIndicator();
+
+        try {
+            const response = await this.getAIResponse(message);
+            this.removeTypingIndicator();
+            this.addMessage(response, 'bot');
+        } catch (error) {
+            this.removeTypingIndicator();
+            this.addMessage("I'm sorry, I'm having trouble connecting right now. Please try again later.", 'bot');
+            console.error('Chatbot error:', error);
+        }
+
+        this.sendBtn.disabled = false;
+    }
+
+    addMessage(content, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${sender}-message`;
+        
+        if (sender === 'bot') {
+            const avatarImg = document.createElement('img');
+            avatarImg.src = 'George.jpg';
+            avatarImg.alt = 'George';
+            avatarImg.className = 'message-avatar';
+            messageDiv.appendChild(avatarImg);
+        }
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content';
+        contentDiv.textContent = content;
+        
+        messageDiv.appendChild(contentDiv);
+        this.messagesContainer.appendChild(messageDiv);
+        
+        this.scrollToBottom();
+    }
+
+    showTypingIndicator() {
+        this.isTyping = true;
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'chat-message bot-message typing-message';
+        
+        const avatarImg = document.createElement('img');
+        avatarImg.src = 'George.jpg';
+        avatarImg.alt = 'George';
+        avatarImg.className = 'message-avatar';
+        typingDiv.appendChild(avatarImg);
+        
+        const indicatorDiv = document.createElement('div');
+        indicatorDiv.className = 'typing-indicator';
+        indicatorDiv.innerHTML = `
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        `;
+        typingDiv.appendChild(indicatorDiv);
+        
+        this.messagesContainer.appendChild(typingDiv);
+        this.scrollToBottom();
+    }
+
+    removeTypingIndicator() {
+        this.isTyping = false;
+        const typingMessage = this.messagesContainer.querySelector('.typing-message');
+        if (typingMessage) {
+            typingMessage.remove();
+        }
+    }
+
+    scrollToBottom() {
+        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+    }
+
+    async getAIResponse(userMessage) {
+        const prompt = `${this.context}\n\nUser: ${userMessage}\n\nAssistant:`;
+        
+        try {
+            console.log('Sending request to Gemini API...');
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent?key=${this.apiKey}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{
+                            text: prompt
+                        }]
+                    }],
+                    generationConfig: {
+                        temperature: 0.7,
+                        topK: 40,
+                        topP: 0.95,
+                        maxOutputTokens: 1024,
+                    }
+                })
+            });
+
+            console.log('Response status:', response.status);
+            
+            if (!response.ok) {
+                throw new Error(`API request failed with status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('API Response:', data);
+            
+            if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
+                const responseText = data.candidates[0].content.parts[0].text;
+                console.log('AI Response:', responseText);
+                return responseText;
+            } else {
+                console.error('Unexpected API response structure:', data);
+                throw new Error('Invalid response structure from Gemini API');
+            }
+        } catch (error) {
+            console.error('Gemini API Error:', error);
+            console.log('Falling back to mock response...');
+            // Fallback to mock responses if API fails
+            return this.getFallbackResponse(userMessage);
+        }
+    }
+
+    getFallbackResponse(userMessage) {
+        const lowerMessage = userMessage.toLowerCase();
+        
+        // More comprehensive keyword matching - speaking as George
+        if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+            return 'Hi there! I\'m George, and I\'m excited to chat with you! Feel free to ask me about my projects, work experience, or anything else you\'d like to know!';
+        } else if (lowerMessage.includes('project') || lowerMessage.includes('work') || lowerMessage.includes('cmi') || lowerMessage.includes('nino') || lowerMessage.includes('movesai')) {
+            return 'I\'ve worked on some really exciting projects that I\'m proud of:\n\n• **CMI Kaggle Multi-Branch Model** - Multi-sensor fusion for BFRB detection\n• **Neural Network Nowcasting (NiNo+)** - Achieved 44% training time reduction\n• **MoveSAI Emissions Prediction** - Got 90% R² accuracy with Google Cloud deployment\n• **FOB Test Analysis Dashboard** - Built a comprehensive Streamlit dashboard\n• **Drug Discovery ML Pipeline** - Saved $25,000 in costs for my company\n• **KobeNet** - Chest X-ray disease detection with ResNet-50\n\nI\'d love to tell you more about any specific project that interests you!';
+        } else if (lowerMessage.includes('experience') || lowerMessage.includes('intern') || lowerMessage.includes('job') || lowerMessage.includes('career')) {
+            return 'I have some great professional experience:\n\n**Current Role:**\nI\'m currently a Data Science Intern at Humanwell Pharmaceutical US, Inc. (June 2024 - Present)\n- Developed an MSD prediction model with 60% accuracy\n- Saved $25,000 in reagent and labor costs\n- Built a visualization dashboard on AWS EC2\n\n**Previous Role:**\nI worked as a Market Research Analyst at Mobalytics (June 2022 - August 2022)\n- Reduced manual reporting time by 40%\n- Built interactive Tableau dashboards\n\nI\'m actively seeking full-time opportunities as a Data Scientist or ML Engineer!';
+        } else if (lowerMessage.includes('skill') || lowerMessage.includes('technology') || lowerMessage.includes('python') || lowerMessage.includes('pytorch') || lowerMessage.includes('aws')) {
+            return 'I have a strong technical skill set that I\'ve built up over the years:\n\n**Programming Languages:**\nPython, SQL, C++\n\n**ML/AI Libraries:**\nPyTorch, Scikit-learn, TensorFlow, XGBoost, RDKit, Matplotlib, Pandas\n\n**Cloud & Tools:**\nAWS (EC2, S3), Google Cloud, Docker, Git, Tableau, Streamlit\n\n**Specializations:**\nDeep Learning, Computer Vision, Predictive Modeling, Multi-sensor Fusion, Data Visualization\n\nI love learning new technologies and applying them to solve real-world problems!';
+        } else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('phone') || lowerMessage.includes('reach') || lowerMessage.includes('github') || lowerMessage.includes('linkedin')) {
+            return 'I\'d love to connect with you! Here\'s how you can reach me:\n\n📧 **Email:** gezhiwang103@gmail.com\n📱 **Phone:** 6072626886\n📍 **Location:** Ithaca, NY (Cornell University)\n\n🔗 **Links:**\n• GitHub: github.com/gw103\n• LinkedIn: Available in the hero section\n• CV: Download available in the hero section\n\nI\'m always interested in new opportunities and exciting projects!';
+        } else if (lowerMessage.includes('education') || lowerMessage.includes('degree') || lowerMessage.includes('university') || lowerMessage.includes('cornell') || lowerMessage.includes('duke') || lowerMessage.includes('school')) {
+            return 'I have a great educational background:\n\n**Current:**\n🎓 Master of Engineering in Systems Engineering\n📍 Cornell University (Ithaca, NY)\n📅 August 2024 - Present\n🎯 Computational and Data Science Track\n\n**Undergraduate:**\n🎓 Bachelor of Science in Data Science\n📍 Duke University & Duke Kunshan University\n📅 August 2020 - May 2024\n🏆 Kunshan Government Full Scholarship\n🏆 Dean\'s List Fall 2023\n\n**Research:**\n📄 Published my first-author paper at IEEE ICC 2024\n\nI\'m really passionate about learning and research!';
+        } else if (lowerMessage.includes('paper') || lowerMessage.includes('publication') || lowerMessage.includes('research')) {
+            return 'I\'m proud of my research work:\n\n📄 **"SK-SVR-CNN: A Hybrid Approach for Traffic Flow Prediction with Signature PDE Kernel and Convolutional Neural Networks"**\n• Published at IEEE International Conference on Communications (ICC) 2024\n• My first-author publication\n• Conducted under supervision of Prof. Azzedine Boukerche and Prof. Peng Sun\n\nThis work really demonstrates my commitment to advancing the field through rigorous research and innovation. I love the intersection of theory and practical applications!';
+        } else if (lowerMessage.includes('hire') || lowerMessage.includes('opportunity') || lowerMessage.includes('job') || lowerMessage.includes('position')) {
+            return 'I\'m actively seeking full-time opportunities! I\'m looking for roles as a **Data Scientist** or **Machine Learning Engineer**. Here are my key strengths:\n\n• Multi-sensor fusion and computer vision\n• Predictive modeling and deep learning\n• Cloud deployment and scalable systems\n• Cost-effective AI solutions (I saved $25,000+ in my current role)\n• Strong research background with published papers\n\nI\'d love to discuss opportunities with you! Contact me at gezhiwang103@gmail.com';
+        } else {
+            return "That's a great question! I'd love to tell you more about my projects, work experience, skills, education, research, or anything else you're curious about. What would you like to know?";
+        }
+    }
+}
+
+// Initialize chatbot when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    new Chatbot();
+});
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
