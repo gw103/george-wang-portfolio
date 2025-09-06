@@ -761,6 +761,54 @@ section {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
+/* Skill Items with Logos */
+.skill-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #333;
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    margin: 2px;
+}
+
+.skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    color: #333;
+}
+
+.skill-item img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Skill Items with Text Only */
+.skill-item-text {
+    display: inline-block;
+    background: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #333;
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    margin: 2px;
+}
+
+.skill-item-text:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    color: #333;
+}
+
 .project-image {
     height: 200px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
