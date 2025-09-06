@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George (Gezhi) Wang - Portfolio</title>
+    <title>George (Gezhi) Wang - Data Scientist & ML Engineer</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">Portfolio</a>
+                <a href="#home">George Wang</a>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -60,6 +60,20 @@
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-social-links">
+                    <a href="https://github.com/gw103" class="hero-social-link" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="George(Gezhi)_Wang_CV.pdf" class="hero-social-link" target="_blank" title="Download CV">
+                        <i class="fas fa-file-pdf"></i>
+                    </a>
+                    <a href="https://www.instagram.com/georgegezhiwang/" class="hero-social-link" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/george-wang-9b08572a9/" class="hero-social-link" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
@@ -108,8 +122,8 @@
             <h2 class="section-title">Education</h2>
             <div class="education-timeline">
                 <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                    <div class="education-icon university-logo">
+                        <img src="cornell.png" alt="Cornell University" class="university-logo-img">
                     </div>
                     <div class="education-content">
                         <h3>Master of Engineering in Systems Engineering</h3>
@@ -128,8 +142,8 @@
                 </div>
                 
                 <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-university"></i>
+                    <div class="education-icon university-logo">
+                        <img src="duke.png" alt="Duke University" class="university-logo-img">
                     </div>
                     <div class="education-content">
                         <h3>Bachelor of Science in Data Science</h3>
@@ -246,6 +260,79 @@
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-placeholder">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Neural Network Nowcasting (NiNo+)</h3>
+                        <p>Advanced the Neuron Interaction and Nowcasting (NiNo) architecture for predicting neural network parameters during training. Implemented dynamic period scheduling, enhanced node representations with Laplacian Positional Encoding, and integrated LSTM/GRU forecasting heads, achieving up to 44% reduction in training time across computer vision tasks.</p>
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>Graph Neural Networks</span>
+                            <span>LSTM/GRU</span>
+                            <span>Computer Vision</span>
+                            <span>Parameter Prediction</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/gw103/ParameterPredictionIsAllYouNeed" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>MoveSAI - Emissions Prediction</h3>
+                        <p>Developed a Multilayer Perceptron Model for emissions prediction achieving 90% R² accuracy. Deployed using Docker and Google Cloud for scalable production performance with comprehensive data preprocessing pipeline.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Docker</span>
+                            <span>Google Cloud</span>
+                            <span>MLP</span>
+                            <span>Feature Engineering</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.coecis.cornell.edu/CAT/cat_ai" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> Cornell GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>FOB Test Analysis Dashboard</h3>
+                        <p>Comprehensive Streamlit-based dashboard for Functional Observational Battery (FOB) test analysis with AI-powered reporting. Features 6 analysis modes (behavior, autonomic functions, reflexes, temperature, weight, convulsive behaviors), multi-language support, real-time data visualization, and automated PowerPoint generation for research presentations.</p>
+                        <div class="project-tech">
+                            <span>Streamlit</span>
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Matplotlib</span>
+                            <span>DeepSeek AI</span>
+                            <span>PowerPoint</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://makevisez.streamlit.app" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
                             <i class="fas fa-pills"></i>
                         </div>
                     </div>
@@ -342,48 +429,22 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Let's work together!</h3>
-                    <p>I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                    <p>I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, feel free to reach out to me directly!</p>
                     <div class="contact-methods">
                         <div class="contact-method">
                             <i class="fas fa-envelope"></i>
-                            <span>gezhiwang103@gmail.com</span>
+                            <a href="mailto:gezhiwang103@gmail.com">gezhiwang103@gmail.com</a>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-phone"></i>
-                            <span>(607) 262-6886</span>
+                            <a href="tel:+16072626886">(607) 262-6886</a>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Ithaca, NY 14850</span>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="https://github.com/gw103" class="social-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/george-wang-9b08572a9/" class="social-link" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://www.instagram.com/georgegezhiwang/" class="social-link" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
             </div>
         </div>
     </section>

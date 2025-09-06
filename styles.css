@@ -182,6 +182,36 @@ body {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.hero-social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.hero-social-link {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-social-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .btn {
@@ -454,6 +484,20 @@ section {
     color: white;
     font-size: 1.5rem;
     flex-shrink: 0;
+}
+
+.university-logo {
+    background: white;
+    border: 2px solid #e5e7eb;
+    padding: 6px;
+    overflow: hidden;
+}
+
+.university-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 .education-content {
@@ -794,9 +838,11 @@ section {
 
 /* Contact Section */
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .contact-info h3 {
@@ -829,61 +875,17 @@ section {
     color: #2563eb;
 }
 
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-link {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.contact-method a {
+    color: #4b5563;
     text-decoration: none;
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-.social-link:hover {
-    transform: translateY(-3px);
+.contact-method a:hover {
+    color: #2563eb;
 }
 
-.contact-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 1rem;
-    border: 2px solid #e5e7eb;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-    font-family: inherit;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #2563eb;
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
 
 /* Footer */
 .footer {
@@ -1014,6 +1016,16 @@ section {
 
     .hero-buttons {
         justify-content: center;
+    }
+
+    .hero-social-links {
+        justify-content: center;
+    }
+    
+    .hero-social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
     }
 
     .profile-card {
