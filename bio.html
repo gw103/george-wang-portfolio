@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George (Gezhi) Wang - Biography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .bio-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .bio-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .bio-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .bio-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .bio-section {
+            margin-bottom: 3rem;
+        }
+        
+        .bio-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        .bio-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+        }
+        
+        .bio-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .bio-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .bio-timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .bio-timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+        
+        .bio-timeline-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        
+        .bio-timeline-item .date {
+            color: #667eea;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .bio-timeline-item p {
+            margin-bottom: 0;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .bio-highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #f59e0b;
+            margin: 2rem 0;
+        }
+        
+        .bio-highlight p {
+            margin: 0;
+            color: #92400e;
+            font-weight: 500;
+        }
+        
+        .bio-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .bio-stat {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .bio-stat h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .bio-stat p {
+            color: #6b7280;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .bio-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .bio-hero p {
+                font-size: 1rem;
+            }
+            
+            .bio-content {
+                padding: 40px 15px;
+            }
+            
+            .bio-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                display: inline-block;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a>
+
+    <!-- Bio Hero Section -->
+    <section class="bio-hero">
+        <div class="container">
+            <h1>My Story</h1>
+            <p>A journey through passion, perseverance, and the pursuit of knowledge in the world of data science and machine learning</p>
+        </div>
+    </section>
+
+    <!-- Bio Content -->
+    <div class="bio-content">
+        <div class="bio-section">
+            <h2>Early Beginnings</h2>
+            <p>My journey into the world of data science began with a simple curiosity about how patterns emerge from seemingly random information. Growing up, I was always fascinated by the intersection of mathematics and real-world applications. This curiosity led me to pursue a Bachelor's degree in Data Science at Duke University and Duke Kunshan University, where I discovered my passion for transforming complex data into meaningful insights.</p>
+            
+            <p>During my undergraduate years, I was fortunate to receive the Kunshan Government Full Scholarship and earned a place on the Dean's List in Fall 2023. These achievements not only recognized my academic excellence but also reinforced my commitment to pushing the boundaries of what's possible with data.</p>
+        </div>
+
+        <div class="bio-section">
+            <h2>Academic Journey</h2>
+            <div class="bio-timeline">
+                <div class="bio-timeline-item">
+                    <h3>Master of Engineering in Systems Engineering</h3>
+                    <div class="date">August 2024 - Present</div>
+                    <p>Currently pursuing advanced studies at Cornell University, focusing on the Computational and Data Science track. This program has allowed me to dive deeper into cutting-edge topics like advanced machine learning, computer vision, deep learning, and reinforcement learning.</p>
+                </div>
+                
+                <div class="bio-timeline-item">
+                    <h3>Bachelor of Science in Data Science</h3>
+                    <div class="date">August 2020 - May 2024</div>
+                    <p>Graduated from Duke University & Duke Kunshan University with a strong foundation in data science, machine learning, and statistical analysis. My coursework included Bayesian inference, speech recognition, and advanced probability theory.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2>Research & Innovation</h2>
+            <p>One of my proudest achievements is publishing my first-author paper at the IEEE International Conference on Communications (ICC) 2024. The paper, titled "SK-SVR-CNN: A Hybrid Approach for Traffic Flow Prediction with Signature PDE Kernel and Convolutional Neural Networks," represents months of rigorous research and innovation.</p>
+            
+            <p>This work, conducted under the supervision of Prof. Peng Sun and Prof. Azzedine Boukerche, demonstrates my ability to combine theoretical knowledge with practical applications. The research focused on developing novel approaches to traffic flow prediction, leveraging the mathematical properties of signature kernels to capture temporal dependencies in traffic data.</p>
+            
+            <div class="bio-highlight">
+                <p><strong>Research Impact:</strong> This work has contributed to the field of intelligent transportation systems and showcases my commitment to advancing knowledge through rigorous scientific inquiry.</p>
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2>Professional Experience</h2>
+            <div class="bio-timeline">
+                <div class="bio-timeline-item">
+                    <h3>Data Science Intern - Drug Discovery</h3>
+                    <div class="date">June 2024 - Present</div>
+                    <p>At Humanwell Pharmaceutical US, Inc., I've been working on developing predictive models for drug discovery. My most significant achievement has been creating a model for Mean Squared Displacement (MSD) prediction using SMILES molecular structures, achieving 60% accuracy with limited data. This work has saved the company over $25,000 in costs and has been deployed as a FastAPI-based inference system.</p>
+                </div>
+                
+                <div class="bio-timeline-item">
+                    <h3>Market Research Analyst</h3>
+                    <div class="date">June 2022 - August 2022</div>
+                    <p>During my externship at Mobalytics, I developed SQL queries and built interactive Tableau dashboards that reduced manual reporting time by 40%. This experience taught me the importance of automation and user-friendly data visualization in business contexts.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2>Technical Expertise & Projects</h2>
+            <p>My technical journey has been marked by a series of challenging and innovative projects that have pushed the boundaries of what's possible with machine learning and data science:</p>
+            
+            <div class="bio-stats">
+                <div class="bio-stat">
+                    <h3>6+</h3>
+                    <p>Major Projects Completed</p>
+                </div>
+                <div class="bio-stat">
+                    <h3>1</h3>
+                    <p>Published Research Paper</p>
+                </div>
+                <div class="bio-stat">
+                    <h3>$25K+</h3>
+                    <p>Cost Savings Generated</p>
+                </div>
+                <div class="bio-stat">
+                    <h3>90%</h3>
+                    <p>Highest Model Accuracy</p>
+                </div>
+            </div>
+            
+            <p>From developing multi-sensor fusion approaches for detecting Body-Focused Repetitive Behaviors to creating neural network parameter prediction systems that reduce training time by 44%, each project has been a learning experience that has shaped my understanding of the field.</p>
+        </div>
+
+        <div class="bio-section">
+            <h2>Philosophy & Approach</h2>
+            <p>I believe that the most impactful data science solutions come from understanding the problem deeply before diving into the technical implementation. My approach combines rigorous mathematical foundations with practical problem-solving skills, always keeping the end user and real-world impact in mind.</p>
+            
+            <p>Whether I'm working on computer vision problems, developing predictive models, or building scalable data pipelines, I strive to create solutions that are not only technically sound but also accessible and maintainable. This philosophy has guided me through my academic journey and professional experiences.</p>
+        </div>
+
+        <div class="bio-section">
+            <h2>Looking Forward</h2>
+            <p>As I continue my journey in data science and machine learning, I'm excited about the opportunities to apply my skills to solve complex, real-world problems. I'm particularly interested in advancing the fields of computer vision, natural language processing, and predictive modeling, with a focus on creating solutions that have meaningful societal impact.</p>
+            
+            <p>I'm actively seeking full-time opportunities as a Data Scientist or Machine Learning Engineer where I can contribute to innovative projects and continue growing as a professional. My goal is to work with teams that share my passion for using data to drive positive change and create solutions that make a difference.</p>
+            
+            <div class="bio-highlight">
+                <p><strong>Mission:</strong> To leverage the power of data science and machine learning to solve complex problems and create meaningful impact in healthcare, technology, and beyond.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
