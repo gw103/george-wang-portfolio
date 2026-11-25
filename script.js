@@ -6,7 +6,7 @@ class Chatbot {
         // URL of the Cloudflare Worker from worker/gemini-proxy.js (see GEMINI_SETUP.md).
         // The Gemini API key lives in that Worker, never in this file.
         // While this is empty, the chatbot answers from the built-in responses below.
-        this.proxyUrl = '';
+        this.proxyUrl = 'https://yellow-shape-197f.gezhiwang103.workers.dev';
         this.init();
     }
 
