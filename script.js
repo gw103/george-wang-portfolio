@@ -4,7 +4,7 @@ class Chatbot {
         this.isOpen = false;
         this.isTyping = false;
         this.apiKey = 'AIzaSyBkw6dqrouC-Jl8Xe3QiyP83lOQTPdWYmQ';
-        this.model = 'gemini-1.5-flash';
+        this.model = 'gemini-3.5-flash-lite';
         this.context = this.createContext();
         this.init();
     }
@@ -214,10 +214,11 @@ RESPONSE GUIDELINES:
         
         try {
             console.log('Sending request to Gemini API...');
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent?key=${this.apiKey}`, {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'x-goog-api-key': this.apiKey,
                 },
                 body: JSON.stringify({
                     contents: [{
@@ -226,9 +227,6 @@ RESPONSE GUIDELINES:
                         }]
                     }],
                     generationConfig: {
-                        temperature: 0.7,
-                        topK: 40,
-                        topP: 0.95,
                         maxOutputTokens: 1024,
                     }
                 })
