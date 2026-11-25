@@ -1,106 +1,62 @@
-# Gemini AI Chatbot Setup Guide
+# Chatbot setup (Gemini through a Cloudflare Worker)
 
-## Overview
-Your portfolio now includes an interactive chatbot that can answer questions about you and your work. Currently, it uses mock responses for demo purposes, but you can easily integrate it with Google's Gemini AI for more intelligent responses.
+## How it works
 
-## Current Status
-✅ Chatbot UI implemented and styled  
-✅ Mock response system working  
-✅ Comprehensive context about George created  
-⏳ Gemini API integration (ready for your API key)  
+```
+visitor's browser  ->  Cloudflare Worker  ->  Gemini API
+   (script.js)        (worker/gemini-proxy.js,
+                       holds the API key)
+```
 
-## To Enable Gemini AI Integration:
+- The Gemini API key is a **secret on the Worker**. It is never in this repo or in the site's JavaScript.
+- The bot's persona and facts are in `chatbot-context.txt`. The Worker reads that file from the live site.
+- If the Worker is not configured or a call fails, the chatbot answers from the built-in responses in `script.js` (`getFallbackResponse`).
 
-### Step 1: Get Gemini API Key
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in with your Google account
-3. Click "Create API Key"
-4. Copy the generated API key
+**Do not paste an API key into `script.js`.** Google scans public repos and websites and disables keys it finds. That is what happened to the original key ("Your API key was reported as leaked").
 
-### Step 2: Update the API Key
-1. Open `script.js`
-2. Find line 6: `this.apiKey = 'YOUR_GEMINI_API_KEY';`
-3. Replace `'YOUR_GEMINI_API_KEY'` with your actual API key
-4. Save the file
+## One-time setup
 
-### Step 3: Enable Gemini Integration
-1. In `script.js`, find the commented section starting at line 202
-2. Uncomment the Gemini API call code (lines 204-220)
-3. Comment out or remove the mock response system (lines 173-200)
-4. Save the file
+1. **Push this repo** so `chatbot-context.txt` is live at `<your site>/chatbot-context.txt`.
+2. **Create a Gemini API key** at <https://aistudio.google.com/apikey>.
+   - Restrict it to the Gemini API only.
+   - Do not add a website restriction: the Worker calls Google, not the visitor's browser.
+   - Delete the old leaked key while you are there.
+3. **Create the Worker** at <https://dash.cloudflare.com> (free plan is enough):
+   Workers & Pages -> Create -> Worker (Hello World template) -> Deploy -> Edit code.
+   Replace all of the code with the contents of `worker/gemini-proxy.js`, then Deploy.
+4. **Add the settings** under the Worker's Settings -> Variables and Secrets:
 
-### Step 4: Test the Integration
-1. Refresh your portfolio page
-2. Click the chatbot icon
-3. Ask questions about your work
-4. Verify that Gemini AI is responding
+   | Name | Type | Value |
+   | --- | --- | --- |
+   | `GEMINI_API_KEY` | Secret | the key from step 2 |
+   | `SITE_URL` | Text | the portfolio's address, no trailing slash, e.g. `https://gw103.github.io/george-wang-portfolio` |
 
-## Features
+5. **Point the site at the Worker**: copy the Worker's URL (looks like `https://<name>.<account>.workers.dev`) into `this.proxyUrl` near the top of `script.js`. Commit and push.
+6. **Test on the live site** (not from a file on disk) with the browser's DevTools Console open. `Chat proxy status: 200` means Gemini answered.
 
-### Current Mock Responses Include:
-- **Greetings**: Friendly welcome messages
-- **Projects**: Detailed information about all 7 projects
-- **Experience**: Current and previous work experience
-- **Skills**: Technical skills and specializations
-- **Contact**: Email, phone, and social links
-- **Education**: Columbia, Cornell and Duke background
-
-### Chatbot Capabilities:
-- 💬 **Interactive Chat**: Users can ask questions naturally
-- ⚡ **Quick Responses**: Instant answers about your background
-- 📱 **Mobile Friendly**: Works on all device sizes
-- 🎨 **Professional Design**: Matches your portfolio theme
-- 🔄 **Typing Indicator**: Shows when bot is "thinking"
-- 💾 **Persistent Chat**: Maintains conversation history
-
-### User Experience:
-- **Auto-prompt**: Chatbot pulses after 5 seconds to indicate availability
-- **Smooth Animations**: Professional transitions and hover effects
-- **Keyboard Support**: Enter key to send messages
-- **Scroll Management**: Auto-scrolls to new messages
-- **Error Handling**: Graceful fallbacks if API fails
-
-## Customization Options
-
-### Modify Responses:
-Edit the `createContext()` method in `script.js` to update:
-- Your background information
-- Project details
-- Skills and technologies
-- Contact information
-- Response tone and style
-
-### Add More Topics:
-Extend the mock responses object to include:
-- Specific project deep-dives
-- Technical explanations
-- Career goals
-- Hobbies and interests
-
-### Styling Changes:
-Modify the CSS in `styles.css` under the "Chatbot Widget" section to:
-- Change colors and gradients
-- Adjust size and positioning
-- Modify animations
-- Update mobile responsiveness
-
-## Security Notes
-- Keep your API key secure
-- Consider implementing rate limiting
-- Monitor API usage and costs
-- Use environment variables for production
+Dashboard labels change over time; the names above may differ slightly.
 
 ## Troubleshooting
-- **API Key Issues**: Verify key is correct and has proper permissions
-- **CORS Errors**: Ensure you're using the correct Gemini API endpoint
-- **Rate Limits**: Implement delays between requests if needed
-- **Mobile Issues**: Test on various devices and screen sizes
 
-## Future Enhancements
-- Multi-language support (Chinese/English)
-- Voice input/output
-- File sharing capabilities
-- Integration with your calendar
-- Analytics and conversation tracking
+The Console shows `Chat proxy error: ...` with one of these messages:
 
-The chatbot is now ready to use! Visitors can learn about your work in an interactive, engaging way that sets your portfolio apart from traditional static sites.
+| Message | Meaning |
+| --- | --- |
+| `Origin not allowed` | `SITE_URL` does not match the address the page is served from. Also appears when the page is opened from disk or localhost. |
+| `Worker is missing GEMINI_API_KEY or SITE_URL` | A setting from step 4 is missing or misspelled. |
+| `Could not load chatbot-context.txt` | `SITE_URL` has the wrong path, or the file has not been pushed. |
+| `Gemini returned HTTP 403 PERMISSION_DENIED` | The key is invalid, unrestricted, or was reported as leaked. Create a new one. |
+| `Gemini returned HTTP 429 RESOURCE_EXHAUSTED` | Quota is used up, or the key has been blocked. |
+| `Gemini returned HTTP 400 FAILED_PRECONDITION` | Usually means Gemini is not available in the region the request came from. |
+| `Gemini returned HTTP 404` | The model was retired. Update `MODEL` in the Worker (see <https://ai.google.dev/gemini-api/docs/models>). |
+
+Full error details are in the Worker's logs in the Cloudflare dashboard.
+
+## Keeping the bot up to date
+
+When the portfolio changes, update both:
+
+- `chatbot-context.txt`: what the AI knows.
+- `getFallbackResponse()` in `script.js`: the built-in answers, in English and Chinese.
+
+The Worker only needs redeploying if `worker/gemini-proxy.js` itself changes.

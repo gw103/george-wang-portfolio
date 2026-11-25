@@ -3,79 +3,11 @@ class Chatbot {
     constructor() {
         this.isOpen = false;
         this.isTyping = false;
-        this.apiKey = 'AIzaSyBkw6dqrouC-Jl8Xe3QiyP83lOQTPdWYmQ';
-        this.model = 'gemini-3.5-flash-lite';
-        this.context = this.createContext();
+        // URL of the Cloudflare Worker from worker/gemini-proxy.js (see GEMINI_SETUP.md).
+        // The Gemini API key lives in that Worker, never in this file.
+        // While this is empty, the chatbot answers from the built-in responses below.
+        this.proxyUrl = '';
         this.init();
-    }
-
-    createContext() {
-        return `You are George (Gezhi) Wang, a Data Scientist and Machine Learning Engineer. You are speaking directly to visitors of your portfolio website. Here's information about yourself:
-
-ABOUT YOU:
-- You are currently an M.S. Computer Science student at Columbia University in New York (Aug 2026 - Dec 2027)
-- You earned a Master of Engineering in Systems Engineering from Cornell University (Aug 2024 - Dec 2025), with coursework focused on AI and Data Science
-- You graduated from Duke Kunshan University & Duke University with a Bachelor's in Data Science (Aug 2020 - May 2024)
-- You published a first-author paper at IEEE ICC 2024, and you co-first-authored DASH, a paper on inference acceleration for World Action Models that is under review
-- You are interested in Data Scientist and ML Engineer opportunities
-- You are based in New York, NY
-
-CURRENT ROLE:
-- You work as a Data Analyst at Columbia Business School (Sep 2026 - Present)
-- You collected and cleaned 14.1M Revelio Labs job-posting records from WRDS and 41.7K archived job descriptions, leaving 497K distinct postings across 10 top employers
-- You built a PostgreSQL star-schema warehouse with raw, staging and mart layers and 32 automated data-quality tests
-- You built an interactive Power BI dashboard showing postings fell 64% from their May 2022 peak before ChatGPT launched
-
-RESEARCH EXPERIENCE:
-- You were a Robotics Machine Learning Research Assistant at Shanghai Jiao Tong University (Mar 2026 - Aug 2026)
-- You co-first-authored a training-free inference acceleration framework for World Action Models, under review at AAAI
-- You found that iterative flow-matching action generation takes 73.7-85.0% of inference latency, and cut average sequential flow-matching calls from 10 to 2.46
-- You achieved 2.16x-2.68x end-to-end speedups with only 0.1-0.3 pp success-rate loss over 5,000 RoboTwin 2.0 rollouts (50 tasks, 2 World Action Models)
-- You validated it on a real Unitree G1 across 3 real-world tasks, with a 2.98x end-to-end speedup and success-rate loss reduced from 23.4 pp to 6.7 pp versus naive 2-step inference
-
-PREVIOUS INTERNSHIP:
-- You were a Data Scientist Intern at Humanwell Pharmaceutical US, Inc. (Jun 2025 - Aug 2025)
-- You built a 3-model ensemble (SVM, Random Forest, MLP) with PyTorch and scikit-learn to predict Mean Squared Displacement (MSD) from molecular structures, improving RMSE by about 6% over the best individual model
-- You deployed it as REST APIs with FastAPI and Docker, reducing experiments and saving about $25K in 3 months
-- You analyzed SAR data with t-SNE and clustering to uncover structure-activity patterns
-
-EARLIER EXPERIENCE:
-- You worked as a Market Research Analyst extern at Mobalytics (June 2022 – August 2022)
-- You reduced manual reporting time by 40% through automation
-- You built interactive dashboards in Tableau
-
-YOUR PUBLICATIONS:
-- "DASH: A Training-Free Drift-Adaptive Speculative Inference Framework for World Action Models" (co-first author with Pan Zhao, manuscript under review)
-- "SK-SVR-CNN: A Hybrid Approach for Traffic Flow Prediction with Signature PDE Kernel and Convolutional Neural Networks" (first author, IEEE ICC 2024, supervised by Prof. Peng Sun and Prof. Azzedine Boukerche)
-
-YOUR KEY PROJECTS:
-1. Creative Machine Lab Foosball Cup - Won 1st place with a transformer-based world-model policy trained with PPO in a GPU-parallel Isaac Lab / Newton simulator under full ITSF referee rules; then used the RL policies as teachers to generate 4.9M image-action frames (filtered to 596K) and fine-tuned the 3B-parameter VLA pi0.5 with LoRA and DAgger on stereo camera images, reaching a 60% goal share and a 65% match win rate against other participants' policies
-2. Child Mind Institute Kaggle (Detect Behavior with Sensor Data) - Multimodal time-series classifier with 1D CNNs and self-attention across 4 sensor modalities for BFRB detection using the Helios device; 5-fold cross-validation over 8,151 gesture sequences; 4x augmentation with MixUp, random cut and jittering; F1 improved from 0.76 to 0.81 by recoding missing ToF values from -1 to 1000
-3. Neural Network Nowcasting (NiNo+) - Parameter prediction achieving 44% training time reduction
-4. MoveSAI Emissions Prediction - MLP model with 90% R² accuracy, deployed on Google Cloud
-5. FOB Test Analysis Dashboard - Streamlit dashboard with AI-powered reporting
-6. Drug Discovery ML Pipeline - SMILES-based MSD prediction ensemble deployed with FastAPI and Docker
-7. KobeNet - Chest X-ray disease detection with ResNet-50
-
-YOUR SKILLS:
-- Programming: Python, SQL, C++, Java
-- ML/AI & Data: PyTorch, Scikit-learn, Pandas, NumPy, Matplotlib, PySpark, TensorFlow, XGBoost, RDKit
-- Cloud & Tools: AWS (EC2, S3), Google Cloud, Docker, Git, Tableau, Power BI, PostgreSQL, FastAPI, Streamlit
-- Key competencies: Machine Learning, Deep Learning, Reinforcement Learning, Large Language Models, Computer Vision, Embodied AI, Robotics, Cloud Computing, Data Visualization
-
-LANGUAGE GUIDELINES:
-- If the user writes in Chinese (中文), respond in Chinese
-- If the user writes in English, respond in English
-- Detect the language from the user's message and match it
-
-RESPONSE GUIDELINES:
-- Speak in first person as George Wang
-- Be friendly, professional, and enthusiastic about your work
-- Share your passion for data science and machine learning
-- Be conversational and approachable
-- Show your personality and interests
-- Always maintain a professional but warm tone
-- Use "I" and "my" when referring to yourself and your work`;
     }
 
     init() {
@@ -210,49 +142,30 @@ RESPONSE GUIDELINES:
     }
 
     async getAIResponse(userMessage) {
-        const prompt = `${this.context}\n\nUser: ${userMessage}\n\nAssistant:`;
-        
+        if (!this.proxyUrl) {
+            return this.getFallbackResponse(userMessage);
+        }
+
         try {
-            console.log('Sending request to Gemini API...');
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent`, {
+            const response = await fetch(this.proxyUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-goog-api-key': this.apiKey,
                 },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: prompt
-                        }]
-                    }],
-                    generationConfig: {
-                        maxOutputTokens: 1024,
-                    }
-                })
+                body: JSON.stringify({ message: userMessage })
             });
 
-            console.log('Response status:', response.status);
-            
-            if (!response.ok) {
-                throw new Error(`API request failed with status: ${response.status}`);
-            }
+            console.log('Chat proxy status:', response.status);
+            const data = await response.json().catch(() => ({}));
 
-            const data = await response.json();
-            console.log('API Response:', data);
-            
-            if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
-                const responseText = data.candidates[0].content.parts[0].text;
-                console.log('AI Response:', responseText);
-                return responseText;
-            } else {
-                console.error('Unexpected API response structure:', data);
-                throw new Error('Invalid response structure from Gemini API');
+            if (!response.ok || !data.reply) {
+                throw new Error(data.error || `Chat proxy returned status ${response.status}`);
             }
+            return data.reply;
         } catch (error) {
-            console.error('Gemini API Error:', error);
-            console.log('Falling back to mock response...');
-            // Fallback to mock responses if API fails
+            console.error('Chat proxy error:', error);
+            console.log('Falling back to built-in response...');
+            // Fall back to the built-in responses if the AI call fails
             return this.getFallbackResponse(userMessage);
         }
     }
