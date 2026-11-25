@@ -16,10 +16,12 @@ A modern, responsive portfolio website showcasing George Wang's expertise in Dat
 
 1. **Hero Section**: Eye-catching introduction highlighting George's expertise in Data Science & ML
 2. **About**: Professional background and key achievements
-3. **Education**: Academic credentials from Cornell University and Duke University
-4. **Skills**: Technical expertise in Python, ML/AI libraries, and cloud platforms
-5. **Projects**: Real-world projects including drug discovery, medical imaging, and emissions prediction
-6. **Contact**: Contact information and professional links
+3. **Education**: Academic credentials from Columbia University, Cornell University, and Duke Kunshan University & Duke University
+4. **Experience**: Research and professional roles at Columbia Business School, Shanghai Jiao Tong University, Humanwell Pharmaceutical, and Mobalytics
+5. **Publications**: DASH (under review) and SK-SVR-CNN (IEEE ICC 2024)
+6. **Skills**: Technical expertise in Python, ML/AI libraries, and cloud platforms
+7. **Projects**: Real-world projects including robot learning, sensor-based behavior detection, drug discovery, medical imaging, and emissions prediction
+8. **Contact**: Contact information and professional links
 
 ## Customization Guide
 
@@ -28,24 +30,29 @@ The portfolio is already customized with George Wang's information:
 
 - **Name**: George (Gezhi) Wang
 - **Title**: Data Scientist & Machine Learning Engineer
-- **Contact**: gezhiwang103@gmail.com, (607) 262-6886, Ithaca, NY
-- **Education**: Cornell University (M.Eng) & Duke University (B.S.)
-- **Experience**: Humanwell Pharmaceutical, Mobalytics
+- **Contact**: gezhiwang103@gmail.com, (607) 262-6886, New York, NY
+- **Education**: Columbia University (M.S.), Cornell University (M.Eng) & Duke Kunshan University / Duke University (B.S.)
+- **Experience**: Columbia Business School, Shanghai Jiao Tong University, Humanwell Pharmaceutical, Mobalytics
+- **Resume**: `George Wang Resume.pdf`, linked from the hero section
 
 ### Projects
 The portfolio features George's real projects:
 
-1. **Drug Discovery ML Pipeline** - MSD prediction with ensemble learning
-2. **KobeNet** - Chest X-ray disease detection with ResNet-50
-3. **MoveSAI** - Emissions prediction with 90% R² accuracy
-4. **Kaggle CMI** - Gesture detection with multi-branch architecture
+1. **Creative Machine Lab Foosball Cup** - 1st place with a PPO-trained world-model policy, distilled into the π0.5 VLA
+2. **Kaggle CMI** - Multimodal sensor classifier for behavior detection (F1 0.76 → 0.81)
+3. **NiNo+** - Neural network parameter nowcasting with 44% less training time
+4. **MoveSAI** - Emissions prediction with 90% R² accuracy
+5. **FOB Test Analysis Dashboard** - Streamlit dashboard with AI-powered reporting
+6. **Drug Discovery ML Pipeline** - MSD prediction with ensemble learning
+7. **KobeNet** - Chest X-ray disease detection with ResNet-50
 
 ### Skills
 The skills section showcases George's technical expertise:
 
-- **Programming Languages**: Python, SQL, C++, R, MATLAB
-- **ML/AI Libraries**: PyTorch, TensorFlow, Scikit-learn, RDKit, XGBoost
-- **Cloud & Tools**: AWS, Google Cloud, Docker, FastAPI, Streamlit, Tableau
+- **Programming Languages**: Python, SQL, C++, Java, R, MATLAB
+- **ML/AI Libraries**: PyTorch, TensorFlow, Scikit-learn, Pandas, NumPy, Matplotlib, PySpark, RDKit, XGBoost
+- **Cloud & Tools**: AWS, Google Cloud, Docker, Git, FastAPI, Streamlit, Tableau, Power BI, PostgreSQL
+- **Key Competencies**: Machine Learning, Deep Learning, Reinforcement Learning, Large Language Models, Computer Vision, Embodied AI, Robotics, Cloud Computing, Data Visualization
 
 ### Styling
 Customize the appearance in `styles.css`:

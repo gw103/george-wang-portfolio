@@ -39,11 +39,11 @@ Your portfolio now includes an interactive chatbot that can answer questions abo
 
 ### Current Mock Responses Include:
 - **Greetings**: Friendly welcome messages
-- **Projects**: Detailed information about all 6 projects
+- **Projects**: Detailed information about all 7 projects
 - **Experience**: Current and previous work experience
 - **Skills**: Technical skills and specializations
 - **Contact**: Email, phone, and social links
-- **Education**: Cornell and Duke background
+- **Education**: Columbia, Cornell and Duke background
 
 ### Chatbot Capabilities:
 - 💬 **Interactive Chat**: Users can ask questions naturally

@@ -56,9 +56,9 @@
                 <h1 class="hero-title">
                     Hi, I'm <span class="highlight">George (Gezhi) Wang</span>
                 </h1>
-                <h2 class="hero-subtitle">Student at Cornell University</h2>
+                <h2 class="hero-subtitle">M.S. Computer Science Student at Columbia University</h2>
                 <p class="hero-description">
-                    I develop innovative AI solutions and data-driven insights that solve complex real-world problems in healthcare, pharmaceuticals, and beyond.
+                    I build machine learning systems for robotics and data science, from faster inference for robot world action models to the data pipelines and predictive models behind real decisions.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -68,7 +68,7 @@
                     <a href="https://github.com/gw103" class="hero-social-link" target="_blank" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="George(Gezhi)_Wang_CV.pdf" class="hero-social-link" target="_blank" title="Download CV">
+                    <a href="George%20Wang%20Resume.pdf" class="hero-social-link" target="_blank" title="Download Resume">
                         <i class="fas fa-file-pdf"></i>
                     </a>
                     <a href="https://www.instagram.com/georgegezhiwang/" class="hero-social-link" target="_blank" title="Instagram">
@@ -99,14 +99,16 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I am a passionate Data Scientist and Machine Learning Engineer dedicated to transforming complex data into actionable insights and innovative solutions. Currently pursuing my Master's in Systems Engineering at Cornell University, I specialize in deep learning, computer vision, and predictive modeling with a focus on real-world applications. 
+                        I'm a data scientist and machine learning engineer, currently pursuing an M.S. in Computer Science at Columbia University. Before Columbia, I completed an M.Eng. in Systems Engineering at Cornell University, with coursework focused on AI and data science, and a B.S. in Data Science from Duke Kunshan University and Duke University.
                     </p>
                     <p>
-                        My research and project interests span computer vision, natural language processing, and time series forecasting. During my undergraduate studies, I published a first-author paper at the IEEE International Conference on Communications (ICC) 2024, conducted under the supervision of Prof. Peng Sun and Prof. Azzedine Boukerche. During my internship at Humanwell Pharmaceutical, I developed a predictive model for Mean Squared Displacement (MSD) using SMILES molecular structures and achieved 60% accuracy in 5-fold cross-validation with limited data (800 samples).
-                        I recently particpated in a gesture recognition competition on Kaggle, where I developed a multi-sensor fusion approach for detecting Body-Focused Repetitive Behaviors (BFRBs) using data from the Helios wrist-worn device. Our model was ranked top 40% in the private leaderboard, although we are not fully satisfied with the results, I really enjoyed the process of observing data characteristics, designing data pipeline, building models, and fine-tuning the model. We propsed a very unique approach that few others have attempted, which is replacing the original -1 value for the null data with a very large value 512 for the time-of-flight data. We did
-                        this because we found that the original -1 value is not very informative since the value here measures the distance between the sensor and some surronding objects, so we think the out of range value might cause of a lot of those null values. By integrating this strategy, our model boosted 0.05 in the competition score. We are also glad that the 1st place solution shared the same strategy in handling this. 
+                        My recent research is in embodied AI. As a Robotics Machine Learning Research Assistant at Shanghai Jiao Tong University, I co-first-authored DASH, a training-free inference acceleration framework for World Action Models that is now under review at AAAI. It reaches 2.16×–2.68× end-to-end speedups on the RoboTwin 2.0 benchmark with only 0.1–0.3 pp loss in success rate, and a 2.98× speedup on a real Unitree G1. Earlier, as an undergraduate, I published a first-author paper at the IEEE International Conference on Communications (ICC) 2024 under the supervision of Prof. Peng Sun and Prof. Azzedine Boukerche.
+                    </p>
                     <p>
-                        I am actively seeking full-time opportunities as a Data Scientist or Machine Learning Engineer where I can apply my technical expertise to solve challenging problems and drive meaningful impact through data-driven solutions.
+                        I enjoy the applied side just as much. At Columbia Business School, I work as a Data Analyst, building a PostgreSQL warehouse and a Power BI dashboard over 497K distinct job postings from 10 top employers. At Humanwell Pharmaceutical, I built an ensemble model that predicts Mean Squared Displacement from molecular structures and deployed it as a REST API, which reduced experiments and saved about $25K in three months. Outside of work, I won 1st place in the Creative Machine Lab Foosball Cup with a reinforcement learning policy, and competed in the Child Mind Institute Kaggle competition on detecting behavior from wearable sensor data.
+                    </p>
+                    <p>
+                        I'm interested in Data Scientist and Machine Learning Engineer roles where I can apply this work to challenging real-world problems.
                     </p>
                 </div>
                 <div class="about-image">
@@ -125,34 +127,48 @@
             <div class="education-timeline">
                 <div class="education-item">
                     <div class="education-icon university-logo">
+                        <img src="columbia.png" alt="Columbia University" class="university-logo-img">
+                    </div>
+                    <div class="education-content">
+                        <h3>Master of Science in Computer Science</h3>
+                        <h4>Columbia University</h4>
+                        <p class="education-location">New York, New York</p>
+                        <p class="education-period">Aug 2026 – Dec 2027 (Expected)</p>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-icon university-logo">
                         <img src="cornell.png" alt="Cornell University" class="university-logo-img">
                     </div>
                     <div class="education-content">
                         <h3>Master of Engineering in Systems Engineering</h3>
                         <h4>Cornell University</h4>
                         <p class="education-location">Ithaca, New York</p>
-                        <p class="education-period">Aug 2024 – Present</p>
-                        <p class="education-description">Computational and Data Science Track</p>
+                        <p class="education-period">Aug 2024 – Dec 2025</p>
+                        <p class="education-description">Coursework focused on AI and Data Science</p>
                         <div class="education-courses">
                             <span>Advanced Topics in Machine Learning</span>
                             <span>Computer Vision</span>
+                            <span>Database</span>
                             <span>Deep Learning</span>
                             <span>Reinforcement Learning</span>
                             <span>Cloud Computing</span>
+                            <span>Optimization</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="education-item">
                     <div class="education-icon university-logo">
                         <img src="duke.png" alt="Duke University" class="university-logo-img">
                     </div>
                     <div class="education-content">
                         <h3>Bachelor of Science in Data Science</h3>
-                        <h4>Duke University & Duke Kunshan University</h4>
-                        <p class="education-location">Durham, NC & Kunshan, China</p>
+                        <h4>Duke Kunshan University & Duke University</h4>
+                        <p class="education-location">Kunshan, China & Durham, NC</p>
                         <p class="education-period">Aug 2020 – May 2024</p>
-                        <p class="education-description">Bachelor of Science in Data Science (DKU) & Interdisciplinary Studies (Duke)</p>
+                        <p class="education-description">Bachelor of Science in Data Science (Duke Kunshan) & Interdisciplinary Studies, Data Science Track (Duke)</p>
                         <div class="education-honors">
                             <span class="honor">Kunshan Government Full Scholarship</span>
                             <span class="honor">Dean's List Fall 2023</span>
@@ -160,6 +176,7 @@
                         <div class="education-courses">
                             <span>Machine Learning</span>
                             <span>Bayesian Inference</span>
+                            <span>Data Acquisition and Visualization</span>
                             <span>Speech Recognition</span>
                             <span>Linear Algebra</span>
                             <span>Probability</span>
@@ -173,27 +190,74 @@
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <h2 class="section-title">Research & Professional Experience</h2>
             <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Data Analyst</h3>
+                        <h4>Columbia Business School</h4>
+                        <p class="experience-period">Sep 2026 – Present</p>
+                        <p class="experience-location">New York, New York</p>
+                        <p class="experience-description">
+                            Collected and cleaned 14.1M Revelio Labs job-posting records from WRDS and 41.7K archived job descriptions, removing reposts and location copies to leave 497K distinct postings across 10 top employers.
+                        </p>
+                        <div class="experience-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Built a PostgreSQL star-schema warehouse with raw, staging and mart layers, using CTEs, window functions and regex matching</li>
+                                <li>Wrote 32 automated data-quality tests that validate every output</li>
+                                <li>Analyzed posting time series with SQL moving averages and year-over-year change</li>
+                                <li>Built an interactive Power BI dashboard showing postings fell 64% from their May 2022 peak before ChatGPT launched</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Robotics Machine Learning Research Assistant</h3>
+                        <h4>Shanghai Jiao Tong University</h4>
+                        <p class="experience-period">Mar 2026 – Aug 2026</p>
+                        <p class="experience-location">Shanghai, China</p>
+                        <p class="experience-description">
+                            Co-first-authored a training-free inference acceleration framework for World Action Models, now under review at AAAI.
+                        </p>
+                        <div class="experience-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Profiled per-query inference with CUDA Events and peak GPU-memory tracking, showing iterative flow-matching action generation takes 73.7–85.0% of latency</li>
+                                <li>Evaluated on 5,000 RoboTwin 2.0 rollouts across 50 tasks and 2 World Action Models in PyTorch</li>
+                                <li>Cut average sequential flow-matching calls from 10 to 2.46, for 2.16×–2.68× end-to-end speedups with only 0.1–0.3 pp success-rate loss</li>
+                                <li>Validated on a Unitree G1 across 3 real-world tasks: 2.98× end-to-end speedup, with success-rate loss down from 23.4 pp to 6.7 pp versus naive 2-step inference</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="experience-card">
                     <div class="experience-icon">
                         <i class="fas fa-microscope"></i>
                     </div>
                     <div class="experience-content">
-                        <h3>Data Science Intern (Drug Discovery)</h3>
+                        <h3>Data Scientist Intern</h3>
                         <h4>Humanwell Pharmaceutical US, Inc.</h4>
-                        <p class="experience-period">June 2024 – Present</p>
+                        <p class="experience-period">Jun 2025 – Aug 2025</p>
                         <p class="experience-location">St. Louis, Missouri</p>
                         <p class="experience-description">
-                            Developed a predictive model for Mean Squared Displacement (MSD) using SMILES molecular structures, converting SMILES into Extended Reduced Graph (ERG) fingerprints with RDKit. Implemented an ensemble learning system (SVM, Random Forest, XGBoost, MLP) achieving 60% accuracy in 5-fold cross-validation with limited data (800 samples).
+                            Engineered a 3-model ensemble (SVM, Random Forest, MLP) with PyTorch and scikit-learn to predict Mean Squared Displacement (MSD) from molecular structures, improving RMSE by about 6% over the best individual model and guiding compound selection.
                         </p>
                         <div class="experience-achievements">
                             <h4>Key Achievements:</h4>
                             <ul>
-                                <li>Deployed FastAPI-based inference API saving $25,000 in costs</li>
-                                <li>Built AWS EC2-hosted visualization dashboard</li>
-                                <li>Implemented t-SNE and LDA for SAR dataset analysis</li>
-                                <li>Automated experimental result recording and analysis</li>
+                                <li>Deployed the model on the company server as REST APIs with FastAPI and Docker, reducing experiments and saving about $25K in 3 months</li>
+                                <li>Analyzed SAR data with ETL processes, t-SNE dimensionality reduction and clustering to uncover structure-activity patterns</li>
+                                <li>Used those patterns to improve feature engineering and data-driven decision-making</li>
                             </ul>
                         </div>
                     </div>
@@ -233,11 +297,36 @@
             <div class="publications-grid">
                 <div class="publication-card">
                     <div class="publication-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="publication-content">
+                        <h3>DASH: A Training-Free Drift-Adaptive Speculative Inference Framework for World Action Models</h3>
+                        <p class="publication-authors">Pan Zhao*, <strong>George Wang*</strong>, Jingwu Luo, Yuhao Lei, Renda Jian, Zihan Wu, Chen Zhang, Guanghui He</p>
+                        <p class="publication-venue">Manuscript under review &middot; * Co-first authors</p>
+                        <p class="publication-description">
+                            A training-free framework that speeds up inference for World Action Models. Profiling showed that iterative
+                            flow-matching action generation takes 73.7–85.0% of per-query latency, and DASH cuts the average number of
+                            sequential flow-matching calls from 10 to 2.46 without retraining the model.
+                        </p>
+                        <div class="publication-results">
+                            <h4>Key Results:</h4>
+                            <ul>
+                                <li>2.16×–2.68× end-to-end speedups with only 0.1–0.3 pp success-rate loss</li>
+                                <li>Evaluated on 5,000 RoboTwin 2.0 rollouts across 50 tasks and 2 World Action Models</li>
+                                <li>2.98× end-to-end speedup on a real Unitree G1 across 3 real-world tasks</li>
+                                <li>Success-rate loss reduced from 23.4 pp to 6.7 pp versus naive 2-step inference, a 71% reduction in degradation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-card">
+                    <div class="publication-icon">
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <div class="publication-content">
                         <h3>SK-SVR-CNN: A Hybrid Approach for Traffic Flow Prediction with Signature PDE Kernel and Convolutional Neural Networks</h3>
-                        <p class="publication-authors">Gezhi Wang, Zepu Wang, Peng Sun, Azzedine Boukerche</p>
+                        <p class="publication-authors"><strong>Gezhi Wang</strong>, Zepu Wang, Peng Sun, Azzedine Boukerche</p>
                         <p class="publication-venue">IEEE International Conference on Communications (ICC), 2024</p>
                         <p class="publication-description">
                             Developed a novel hybrid approach combining Signature PDE Kernel with Support Vector Regression (SVR) 
@@ -286,6 +375,10 @@
                             C++
                         </span>
                         <span class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java">
+                            Java
+                        </span>
+                        <span class="skill-item">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg" alt="R">
                             R
                         </span>
@@ -323,6 +416,10 @@
                             Matplotlib
                         </span>
                         <span class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachespark/apachespark-original.svg" alt="PySpark">
+                            PySpark
+                        </span>
+                        <span class="skill-item">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="RDKit">
                             RDKit
                         </span>
@@ -336,7 +433,7 @@
                     <h3>Cloud & Tools</h3>
                     <div class="skill-items">
                         <span class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS">
                             AWS (EC2, S3)
                         </span>
                         <span class="skill-item">
@@ -364,9 +461,27 @@
                             Tableau
                         </span>
                         <span class="skill-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI">
+                            Power BI
+                        </span>
+                        <span class="skill-item">
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
                             PostgreSQL
                         </span>
+                    </div>
+                </div>
+                <div class="skill-category skill-category-wide">
+                    <h3>Key Competencies</h3>
+                    <div class="skill-items">
+                        <span class="skill-item-text">Machine Learning</span>
+                        <span class="skill-item-text">Deep Learning</span>
+                        <span class="skill-item-text">Reinforcement Learning</span>
+                        <span class="skill-item-text">Large Language Models</span>
+                        <span class="skill-item-text">Computer Vision</span>
+                        <span class="skill-item-text">Embodied AI</span>
+                        <span class="skill-item-text">Robotics</span>
+                        <span class="skill-item-text">Cloud Computing</span>
+                        <span class="skill-item-text">Data Visualization</span>
                     </div>
                 </div>
             </div>
@@ -381,17 +496,39 @@
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-placeholder">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Creative Machine Lab Foosball Cup (1st Place)</h3>
+                        <p>Trained a transformer-based world-model policy with PPO to play foosball in a GPU-parallel Isaac Lab / Newton simulator under full ITSF referee rules, winning 1st place in the competition. Used the trained RL policies as teachers to generate 4.9M image–action frames across 1,024 parallel simulated tables, filtered to a 596K-frame training set, then fine-tuned the 3B-parameter VLA π0.5 with LoRA and DAgger on stereo camera images, reaching a 60% goal share and a 65% match win rate against other participants' policies.</p>
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>Reinforcement Learning</span>
+                            <span>PPO</span>
+                            <span>World Models</span>
+                            <span>Isaac Lab</span>
+                            <span>VLA (π0.5)</span>
+                            <span>LoRA</span>
+                            <span>DAgger</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
                             <i class="fas fa-brain"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>CMI Kaggle Multi-Branch Model</h3>
-                        <p>Developed a sophisticated multi-sensor fusion approach for detecting Body-Focused Repetitive Behaviors (BFRBs) using data from the Helios wrist-worn device. Implemented intelligent ToF data handling, masked attention for sensor fusion, and dual model strategy with smart inference for robust real-world deployment. Features 1D CNN backbone with Feature Pyramid Network for multi-scale temporal feature extraction.</p>
+                        <h3>Child Mind Institute Kaggle: Detect Behavior with Sensor Data</h3>
+                        <p>Built a multimodal time-series classifier with 1D CNNs and self-attention across 4 sensor modalities to detect Body-Focused Repetitive Behaviors (BFRBs) from the Helios wrist-worn device, evaluated with 5-fold cross-validation over 8,151 gesture sequences. MixUp, random cut and jittering grew the training folds 4× (about 6.5K to 26K sequences) and improved F1 by 5%. Recoding missing time-of-flight readings from -1 to 1000, to better reflect out-of-range distances, raised F1 from 0.76 to 0.81.</p>
                         <div class="project-tech">
                             <span>PyTorch</span>
                             <span>Multi-Sensor Fusion</span>
                             <span>1D CNN</span>
-                            <span>Attention Mechanism</span>
+                            <span>Self-Attention</span>
                             <span>Feature Pyramid Network</span>
                             <span>GRU/LSTM</span>
                             <span>Data Augmentation</span>
@@ -486,13 +623,14 @@
                     </div>
                     <div class="project-content">
                         <h3>Drug Discovery ML Pipeline</h3>
-                        <p>Developed a predictive model for Mean Squared Displacement (MSD) using SMILES molecular structures. Implemented ensemble learning system achieving 60% accuracy and deployed as FastAPI-based inference API, saving $25,000 in costs.</p>
+                        <p>Built a 3-model ensemble (SVM, Random Forest, MLP) that predicts Mean Squared Displacement (MSD) from SMILES molecular structures, improving RMSE by about 6% over the best individual model. Deployed it as REST APIs with FastAPI and Docker, saving about $25K in 3 months.</p>
                         <div class="project-tech">
                             <span>Python</span>
+                            <span>PyTorch</span>
+                            <span>Scikit-learn</span>
                             <span>RDKit</span>
-                            <span>XGBoost</span>
                             <span>FastAPI</span>
-                            <span>AWS</span>
+                            <span>Docker</span>
                         </div>
                         <div class="project-links">
                             <span class="project-status">Repository Coming Soon</span>
@@ -547,7 +685,7 @@
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Ithaca, NY 14850</span>
+                            <span>New York, NY 10025</span>
                         </div>
                     </div>
                 </div>

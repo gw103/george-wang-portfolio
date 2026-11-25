@@ -685,6 +685,8 @@ section {
 .publications-grid {
     max-width: 800px;
     margin: 0 auto;
+    display: grid;
+    gap: 2rem;
 }
 
 .publication-card {
@@ -816,6 +818,15 @@ section {
 
 .skill-category:hover {
     transform: translateY(-5px);
+}
+
+/* Full-width category row (e.g. Key Competencies) */
+.skill-category-wide {
+    grid-column: 1 / -1;
+}
+
+.skill-category-wide .skill-items {
+    justify-content: center;
 }
 
 .skill-category h3 {
